@@ -1,10 +1,12 @@
 
-<h2 align="center">D-Ron</h2>
+<div align="center">
+  <h1 align="center">D-Ron</h1>
+</div>
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This application is developed for Darren Shaw for his cardboard cutout showcase.
+This application is developed for **Darren Shaw** for his cardboard cutout showcase.
 
 ### Prerequisites
 
@@ -40,4 +42,4 @@ _Step by steps how you can instruct your audience on installing and setting up y
 
 ## License
 
-Distributed under the Darren Shaw, founder of [https://whitespark.ca]
+Distributed under the **Darren Shaw**, founder of [https://whitespark.ca]

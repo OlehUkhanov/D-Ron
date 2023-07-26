@@ -43,4 +43,4 @@ _Step by steps how you can instruct your audience on installing and setting up y
 
 ## License
 
-Distributed under the **Darren Shaw**, founder of [https://whitespark.ca]
+Distributed under the **Darren Shaw**, founder of [https://whitespark.ca](https://whitespark.ca)

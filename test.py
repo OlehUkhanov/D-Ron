@@ -7,7 +7,6 @@ embedder = SentenceTransformer('all-MiniLM-L6-v2')
 with open("./database.json", 'r') as f:
   contents = json.load(f)
   corpus = list(contents.keys())
-  print(corpus)
 
 # Corpus with example sentences
 # corpus = ['A man is eating food.',
@@ -23,11 +22,16 @@ with open("./database.json", 'r') as f:
 corpus_embeddings = embedder.encode(corpus, convert_to_tensor=True)
 
 # Query sentences:
-queries = ['Does geo-tagging photos improve local rankings', 'What is the local rankings']
+queries = ['Does geo-tagging photos improve local rankings', 'Who is whitespark']
 
 
 # Find the closest 5 sentences of the corpus for each query sentence based on cosine similarity
-top_k = min(5, len(corpus))
+print("\n\n======================\n")
+print("Pre-defined Questions : \n")
+for c in corpus:
+   print(c, "\n")
+
+top_k = min(1, len(corpus))
 for query in queries:
     query_embedding = embedder.encode(query, convert_to_tensor=True)
 
@@ -35,9 +39,9 @@ for query in queries:
     cos_scores = util.cos_sim(query_embedding, corpus_embeddings)[0]
     top_results = torch.topk(cos_scores, k=top_k)
 
-    print("\n\n======================\n\n")
-    print("Query:", query)
-    print("\nTop 5 most similar sentences in corpus:")
+    print("\n\n======================\n")
+    print("Converted query from speech with OpenAI Whisper : ", query)
+    print("\nTop 1 most similar sentences in questions : ")
 
     for score, idx in zip(top_results[0], top_results[1]):
         print(corpus[idx], "(Score: {:.4f})".format(score))

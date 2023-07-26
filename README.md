@@ -24,8 +24,10 @@ _Step by steps how you can instruct your audience on installing and setting up y
   ```
 3. Setup `ffmpeg` on your environment
   ```sh
-  You can follow the instruction of this blog to setup `ffmpeg` at [https://www.hostinger.com/tutorials/how-to-install-ffmpeg](https://www.hostinger.com/tutorials/how-to-install-ffmpeg)
+  You can follow the instruction of this blog to setup `ffmpeg` at
   ```
+  [https://www.hostinger.com/tutorials/how-to-install-ffmpeg](https://www.hostinger.com/tutorials/how-to-install-ffmpeg)
+  
 4. Install Python packages
   ```sh
   pip install -r requirements.txt

@@ -1,23 +1,29 @@
 from sentence_transformers import SentenceTransformer, util
 import torch
+import json
 
 embedder = SentenceTransformer('all-MiniLM-L6-v2')
 
+with open("./database.json", 'r') as f:
+  contents = json.load(f)
+  corpus = list(contents.keys())
+  print(corpus)
+
 # Corpus with example sentences
-corpus = ['A man is eating food.',
-          'A man is eating a piece of bread.',
-          'The girl is carrying a baby.',
-          'A man is riding a horse.',
-          'A woman is playing violin.',
-          'Two men pushed carts through the woods.',
-          'A man is riding a white horse on an enclosed ground.',
-          'A monkey is playing drums.',
-          'A cheetah is running behind its prey.'
-          ]
+# corpus = ['A man is eating food.',
+#           'A man is eating a piece of bread.',
+#           'The girl is carrying a baby.',
+#           'A man is riding a horse.',
+#           'A woman is playing violin.',
+#           'Two men pushed carts through the woods.',
+#           'A man is riding a white horse on an enclosed ground.',
+#           'A monkey is playing drums.',
+#           'A cheetah is running behind its prey.'
+#           ]
 corpus_embeddings = embedder.encode(corpus, convert_to_tensor=True)
 
 # Query sentences:
-queries = ['A man is eating pasta.', 'Someone in a gorilla costume is playing a set of drums.', 'A cheetah chases prey on across a field.']
+queries = ['Does geo-tagging photos improve local rankings', 'What is the local rankings']
 
 
 # Find the closest 5 sentences of the corpus for each query sentence based on cosine similarity

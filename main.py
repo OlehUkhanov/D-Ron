@@ -8,6 +8,7 @@ from pydub import playback
 import speech_recognition as sr
 from EdgeGPT import Chatbot, ConversationStyle
 from numba import jit
+import json
 import os
 
 # Initialize the OpenAI API
@@ -34,12 +35,22 @@ def play_audio(file):
 
 async def main():
   try:
+    with open("./database.json", 'r') as f:
+        contents = json.load(f)
+        print(contents.keys())
+  except Exception as e:
+    print(e)
+
+  """
+  try:
     model = whisper.load_model("base.en")
     result = model.transcribe("audio.wav", fp16=False)
     phrase = result["text"]
     print(f"You said: {phrase}")
+    
   except Exception as e:
     print("Error transcribing audio: {0}".format(e))
+  """
 
 if __name__ == "__main__":
   asyncio.run(main())

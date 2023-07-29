@@ -43,9 +43,14 @@ for query in queries:
     print("Converted query from speech with OpenAI Whisper : ", query)
     print("\nTop 1 most similar sentences in questions : ")
 
+    top_score = -1
+    top_score_question = ''
     for score, idx in zip(top_results[0], top_results[1]):
+        if top_score < score:
+           top_score_question = corpus[idx]
         print(corpus[idx], "(Score: {:.4f})".format(score))
 
+    print(contents[top_score_question])
     """
     # Alternatively, we can also use util.semantic_search to perform cosine similarty + topk
     hits = util.semantic_search(query_embedding, corpus_embeddings, top_k=5)

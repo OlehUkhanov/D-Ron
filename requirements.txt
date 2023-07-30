@@ -6,4 +6,5 @@ pydub==0.25.1
 SpeechRecognition==3.10.0
 PyAudio==0.2.13
 ffmpeg
+torch
 sentence_transformers

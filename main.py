@@ -60,7 +60,7 @@ async def main():
         for score, idx in zip(top_results[0], top_results[1]):
           if top_score < score:
             top_score_question = corpus[idx]
-        print(corpus[idx], " -> audio : ", contents[top_score_question], "(Score: {:.4f})".format(score), "\n")
+        print(corpus[idx], "(Score: {:.4f})".format(score), " -> audio : ", contents[top_score_question], "\n")
 
         play_audio('audio/' + contents[top_score_question])
         print("\n\n")

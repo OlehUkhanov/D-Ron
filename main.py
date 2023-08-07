@@ -15,8 +15,10 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # Create a recognizer object and wake word variables
 recognizer = sr.Recognizer()
 
+audio_path = 'audio/'
+
 def play_audio(file):
-  sound = pydub.AudioSegment.from_file(file, format="mp3")
+  sound = pydub.AudioSegment.from_file(audio_path + file, format="mp3")
   playback.play(sound)
 
 async def main():
@@ -60,9 +62,13 @@ async def main():
         for score, idx in zip(top_results[0], top_results[1]):
           if top_score < score:
             top_score_question = corpus[idx]
-        print(corpus[idx], "(Score: {:.4f})".format(score), " -> audio : ", contents[top_score_question], "\n")
 
-        play_audio('audio/' + contents[top_score_question])
+        print(corpus[idx], "(Score: {:.4f})".format(score), " -> audio : ", contents[top_score_question], "\n")
+        
+        if top_score < 0.6:
+          play_audio("score is too low.mp3")
+        else:
+          play_audio(contents[top_score_question])
         print("\n\n")
       except Exception as e:
         print("Error : {0}".format(e))
